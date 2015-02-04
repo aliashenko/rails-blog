@@ -1,6 +1,6 @@
 <p>
   <strong>User:</strong>
-  <%= @post.user.first_name if @post.user %>
+  <%= link_to "#{@post.user.first_name}", user_path(@post.user) if @post.user %>
 </p>
 
 <p>
@@ -18,5 +18,6 @@
   <%= @post.date %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Edit', edit_post_path(@post) if can? :update, @post %>
+<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, @post %>
 <%= link_to 'Back', posts_path %>
