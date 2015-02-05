@@ -1,19 +1,16 @@
-<p>
-  <strong>User:</strong>
+<h1><%= post.title %></h1>
+
+<div>
+  <strong>by </strong>
   <%= link_to "#{post.user.first_name}", user_path(post.user) if post.user %>
-</p>
+  <% if post.date %>
+    <strong>published </strong>
+    <%= post.date.strftime('%c') if post.date %>
+  <% end %>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= post.title %>
-</p>
+<div><%= post.content %></div>
 
-<p>
-  <strong>Content:</strong>
-  <%= post.content %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= post.date %>
-</p>
+<%= link_to 'Edit', edit_post_path(post) if can? :update, post %>
+<%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, post %>
+<%= link_to_unless_current('Back to posts', { controller: 'posts', action: 'index' }) %>

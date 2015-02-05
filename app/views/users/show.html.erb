@@ -15,5 +15,7 @@
 
 <%= render @posts %>
 
-<%= link_to 'Edit', edit_user_path(@user) if can? :update, @user %>
-<%= link_to 'Back', users_path %>
+<div>
+  <%= link_to 'Edit User', edit_user_path(@user) if can? :update, @user %>
+  <%= link_to 'Back to users', users_path %>
+</div>
