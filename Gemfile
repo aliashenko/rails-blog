@@ -33,8 +33,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 group :test do
   gem 'rspec'
+  gem 'rspec-rails'
   gem 'simplecov'
   gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'rspec-activemodel-mocks'
 end
 
 group :development, :test do
