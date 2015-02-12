@@ -28,4 +28,6 @@
 
 <br>
 
-<%= link_to 'New User', admin_new_user_path if current_user.admin? %>
+<% if user_signed_in? %>
+  <%= link_to 'New User', admin_new_user_path if current_user.admin? %>
+<% end %>

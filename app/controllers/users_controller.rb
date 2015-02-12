@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  before_filter :authenticate_user!
+  # before_filter :authenticate_user!
 
   # GET /users
   # GET /users.json
@@ -11,30 +11,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @posts = @user.posts
-  end
-
-  # GET /users/new
-  def new
   end
 
   # GET /users/1/edit
   def edit
     # authorize! :edit, @post
-  end
-
-  # POST /users
-  # POST /users.json
-  def create
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   def admin_new
@@ -88,6 +69,10 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def posts
+    @posts = @user.posts
   end
 
   private
