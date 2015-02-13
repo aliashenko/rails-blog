@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  # before_filter :authenticate_user!
 
   # GET /users
   # GET /users.json
@@ -71,8 +70,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def posts
+  def show_users_posts
     @posts = @user.posts
+    authorize! :show_users_posts, Post
   end
 
   private

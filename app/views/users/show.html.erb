@@ -13,7 +13,7 @@
   <%= @user.last_name %>
 </p>
 
-<%= render @posts %>
+<%= link_to "View #{@user.first_name} posts", users_posts_path(@user) %>
 
 <div>
   <%= link_to 'Edit User', edit_user_path(@user) if can? :update, @user %>
